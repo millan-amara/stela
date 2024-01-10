@@ -1,0 +1,44 @@
+import React from 'react'
+import { useNavigate, useLocation } from "react-router-dom";
+import { ReactComponent as CarIcon } from '../assets/svg/carIcon.svg';
+import { ReactComponent as SearchIcon } from '../assets/svg/searchIcon.svg';
+import { ReactComponent as ExploreIcon } from '../assets/svg/exploreIcon.svg';
+import { ReactComponent as PersonOutlineIcon } from '../assets/svg/personOutlineIcon.svg';
+
+function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const pathMatchRoute = (route) => {
+      if(route === location.pathname) {
+          return true
+      }
+  }
+  return (
+    <footer className="navbar">
+        <nav className="navbarNav">
+            <ul className="navbarListItems">
+                <li className="navbarListItem" onClick={() => navigate('/')}>
+                    <ExploreIcon fill={pathMatchRoute('/') ? '#2c2c2c' : '#8f8f8f'} width='24px' height='24px' />
+                    <p className={pathMatchRoute('/') ? 'navbarListItemNameActive' : 'ListItemName'}>Home</p>
+                </li>
+                <li className="navbarListItem" onClick={() => navigate('/cars')}>
+                    <SearchIcon fill={pathMatchRoute('/cars') ? '#2c2c2c' : '#8f8f8f'} width='24px' height='24px' />
+                    <p className={pathMatchRoute('/cars') ? 'navbarListItemNameActive' : 'ListItemName'}>Search</p>
+                </li>
+                <li className="navbarListItem" onClick={() => navigate('/create-listing')}>
+                    <CarIcon fill={pathMatchRoute('/create-listing') ? '#2c2c2c' : '#8f8f8f'} width='24px' height='24px' />
+                    <p className={pathMatchRoute('/create-listing') ? 'navbarListItemNameActive' : 'ListItemName'}>Sell</p>
+                </li>
+                
+                <li className="navbarListItem" onClick={() => navigate('/profile')}>
+                    <PersonOutlineIcon fill={pathMatchRoute('/profile') ? '#2c2c2c' : '#8f8f8f'} width='24px' height='24px' />
+                    <p className={pathMatchRoute('/profile') ? 'navbarListItemNameActive' : 'ListItemName'}>Profile</p>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+  )
+}
+
+export default Navbar

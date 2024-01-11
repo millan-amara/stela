@@ -138,24 +138,16 @@ function Listing() {
         </tr>
         </tbody>
         </table>
-    </div>
 
-    <div id='buttons' className='flex w-full justify-around pb-5 pt-8'>
-        <div className=''>
-            <a href="https://www.google.com" className='text-white px-3 py-1 rounded-md mr-3 flex items-center' id='whatsapp'>
-                <FaWhatsapp /> WhatsApp
+        <div className='md:w-1/2 md:flex md:justify-center mx-auto'>
+            <a href={`https://wa.me/+254700487751?text= Hi,%20I'm%20interested%20in%20the%20${listing.year}%20${listing.make}%20${listing.model},%20listed%20on%20magaristela.com%20${window.location.href}`} className='text-white px-3 py-1 rounded-md flex items-center justify-center' id='whatsapp'>
+                <FaWhatsapp /> <span> Chat on WhatsApp</span>
             </a>
         </div>
-        <div>
-            <a href="https://www.google.com" className='text-white bg-black px-3 py-1 rounded-md flex items-center'><MdOutlinePhone /> Call</a>
-        </div>
-        <div>
-            <a href="https://www.google.com" className='bg-black text-white px-3 py-1 rounded-md flex items-center'><MdOutlineMail /> Email</a>
-        </div>
-
     </div>
+ 
 
-    <div id='video'>
+    <div id='video' className='mt-5'>
         <iframe id='youtube' src="https://www.youtube.com/embed/FsnIY74ZcjM" title={params.listingId}/>
     </div>
 

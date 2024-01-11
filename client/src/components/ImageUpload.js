@@ -10,7 +10,7 @@ const ImageUpload = ({ onSelectFile, selectedImages, deleteHandler }) => {
         <br />
         <span className="span">up to 6 images</span>
         <input
-          className="inputt" 
+          className="input" 
           type="file"
           id="images"
           name="images"
@@ -21,7 +21,7 @@ const ImageUpload = ({ onSelectFile, selectedImages, deleteHandler }) => {
       </label>
       <br />
 
-      {/* <input className="input" type="file" id="image" name="image" multiple /> */}
+      <input className="input" type="file" multiple />
 
       {selectedImages.length > 0 &&
         (selectedImages.length > 6 ? (

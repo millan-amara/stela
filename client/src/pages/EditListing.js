@@ -36,7 +36,7 @@ function EditListing() {
     const isMounted = useRef(true)
     const params = useParams()
 
-    //also sets userRef to logged in user
+    // also sets userRef to logged in user
     useEffect(() => {
       const isLoggedIn = async () => {
         await axios.get('/logged-in')
@@ -62,15 +62,15 @@ function EditListing() {
       const fetchListing = async () => {
         await axios.get(`/cars/${params.listingId}`)
         .then((response) => {
-          if(response.data !== null) {
-            setListing(response.data)
+          if(response.data.car !== null) {
+            setListing(response.data.car)
             setFormData({
-              ...response.data,
+              ...response.data.car,
               images: [],
               deleteImages: []
             })
 
-            setSelectedImages(response.data.imgs)
+            setSelectedImages(response.data.car.imgs)
             setLoading(false)
           } else {
             navigate('/')

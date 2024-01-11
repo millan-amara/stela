@@ -11,6 +11,7 @@ function Index() {
   const [searchTerm, setSearchTerm] = useState({
     search: ''
   })
+  const [term, setTerm] = useState('')
 
   const { search } = searchTerm;
 
@@ -41,6 +42,7 @@ function Index() {
       setListings(response.data.cars)
       console.log(response.data.cars)
     })
+    setTerm(search)
     setSearchTerm({search: ""})
     setIsSearch(true)
   }
@@ -88,7 +90,7 @@ function Index() {
 		    <span>Search</span>
 	    </button>
     </form>
-    {!loading && listings?.length > 0 && (
+    {listings?.length > 0 ? (
       <>
         <ul className="listingsList">
           {listings.map((listing) => (
@@ -100,15 +102,21 @@ function Index() {
         </ul>
       </>
       
-    )}
+    ) : <>
+      <p className='w-full md:w-3/4 px-2 mx-auto flex items-center'>
+        <span>Sorry, No results found for </span> 
+        <span className='text-orange-600 text-3xl'>
+          {term}!
+        </span>
+      </p>
+    </>}
+
+
+
+
         </>
       }
 
-
-
-
-
-    
     </>
   )
 }

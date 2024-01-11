@@ -33,7 +33,7 @@ const ImageEdit = ({ onSelectFile, selectedImages, deleteHandler, removeHandler 
           </p>
         ) : (
           <p
-            className="upload-btn"
+            className="upload-btn" 
           >
             UPLOAD {selectedImages.length} IMAGE
             {selectedImages.length === 1 ? "" : "S"}
@@ -50,13 +50,13 @@ const ImageEdit = ({ onSelectFile, selectedImages, deleteHandler, removeHandler 
 
       
               {image.hasOwnProperty('url') ?
-                <button 
+                <span 
                 type="button"
                 value={image.filename}
                 className=""
                 id={"image-" + index}
                 onClick={() => removeHandler(image)}
-              >BUTTON</button>: <>
+              >Remove Image</span>: <>
                 <span onClick={() => deleteHandler(image)}>
                   delete image
                 </span>

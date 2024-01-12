@@ -1,34 +1,16 @@
-const User = require('../models/user');
 const Car = require('../models/car');
 const { cloudinary } = require("../cloudinary");
 const { formatDistanceStrict } = require('date-fns');
 
 
-module.exports.getCars = async (req, res) => {
-    const limit = 8;
-    let page = req.query.page ? parseInt(req.query.page) : 0;
-
-    const cars = await Car.find({}).skip(page * limit).limit(limit);
-    const allCars = await Car.find({});
-    const count = allCars.length;
-    let pages;
-    if (count % limit == 0) {
-        pages = Math.floor(count / limit) - 1;
-    } else {
-        pages = Math.floor(count / limit);
-    }
-    res.json({ cars, limit, count, page, pages })  
-}
-
 module.exports.getSearchCars = async (req, res) => {
     const searchQuery = req.body.search;
 
-    const limit = 2;
+    const limit = 1;
     let page = req.query.page ? parseInt(req.query.page) : 0;
 
     if (searchQuery) {
- 
-            const cars = await Car.aggregate([
+            const allCars = await Car.aggregate([
                 {
                     $search: {
                         index: 'stela',
@@ -44,11 +26,16 @@ module.exports.getSearchCars = async (req, res) => {
                         }
                     }
                 },
-                // { $skip: limit * page },
-                // { $limit: limit }
             ]);
+            const count = allCars.length;
+            let pages;
+            if (count % limit == 0) {
+                pages = Math.floor(count / limit) - 1;
+            } else {
+                pages = Math.floor(count / limit);
+            }
 
-            res.json({ cars, limit, page, searchQuery })
+            res.json({ cars: allCars, limit, page, count, pages })
     }
     
 }

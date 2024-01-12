@@ -10,7 +10,6 @@ const upload = multer({ storage });
 
 
 router.route('/index')
-    .get(cars.getCars)
     .post([isLoggedIn, upload.array('files')], cars.createCar);
 
 router.route('/index/search')

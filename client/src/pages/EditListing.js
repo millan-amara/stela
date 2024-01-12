@@ -9,7 +9,6 @@ import ImageEdit from '../components/ImageEdit';
 function EditListing() {
   // eslint-disable-next-line
     const [selectedImages, setSelectedImages] = useState([]);
-    const [listing, setListing] = useState(false);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
       make: '',
@@ -30,7 +29,7 @@ function EditListing() {
       userRef: '',
     })
   
-    const {make,model,year,mileage,price,location,images,transmission,condition,bodyType,color,fuel,engineSize,interiorType, deleteImages, userRef} = formData
+    const {make,model,year,mileage,price,location,images,transmission,condition,bodyType,color,fuel,engineSize,interiorType, deleteImages} = formData
 
     const navigate = useNavigate()
     const isMounted = useRef(true)
@@ -63,7 +62,6 @@ function EditListing() {
         await axios.get(`/cars/${params.listingId}`)
         .then((response) => {
           if(response.data.car !== null) {
-            setListing(response.data.car)
             setFormData({
               ...response.data.car,
               images: [],
@@ -80,7 +78,7 @@ function EditListing() {
       }
 
       fetchListing()
-    }, [])
+    }, [params.listingId, navigate])
 
 
     const onSubmit = async (e) => {
@@ -95,8 +93,6 @@ function EditListing() {
       const requestBody = new FormData();
       delete formData.imgs
    
-
-
       for (const key in formData) {
         requestBody.append(key, formData[key])
       }
@@ -143,13 +139,8 @@ function EditListing() {
       const selectedFilesArray = Array.from(selectedFiles);
     
       const imagesArray = [...selectedFilesArray]
-      // const imagesArray = selectedFilesArray.map((file) => {
-      //   console.log(file);
-      //   return (file);
-      // });
 
-
-      selectedFilesArray.map((file) => {
+      selectedFilesArray.map((file) => (
         new Compressor(file, {
           quality: 0.6,
           success(result) {
@@ -163,7 +154,7 @@ function EditListing() {
             console.log(err.message)
           }
         })
-      })
+      ))
 
       setSelectedImages((previousImages) => previousImages.concat(imagesArray));
       
@@ -194,7 +185,6 @@ function EditListing() {
     if(loading) {
         return <Spinner />
     }
-
 
     return (
       <div className='profile'>

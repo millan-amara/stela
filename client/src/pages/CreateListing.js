@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
 import ImageUpload from '../components/ImageUpload';
@@ -104,13 +103,8 @@ function CreateListing() {
       const selectedFilesArray = Array.from(selectedFiles);
     
       const imagesArray = [...selectedFilesArray]
-      // const imagesArray = selectedFilesArray.map((file) => {
-      //   console.log(file);
-      //   return (file);
-      // });
 
-
-      selectedFilesArray.map((file) => {
+      selectedFilesArray.map((file) => (
         new Compressor(file, {
           quality: 0.6,
           success(result) {
@@ -124,7 +118,7 @@ function CreateListing() {
             console.log(err.message)
           }
         })
-      })
+      ))
 
       setSelectedImages((previousImages) => previousImages.concat(imagesArray));
       

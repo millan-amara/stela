@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ListingItem from '../components/ListingItem';
 import axios from 'axios';
 import Spinner from '../components/Spinner';
@@ -6,27 +6,14 @@ import Spinner from '../components/Spinner';
 function Index() {
 
   const [listings, setListings] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState({
-    search: ''
+    search: '',
   })
   const [term, setTerm] = useState('')
 
   const { search } = searchTerm;
-
-  useEffect(() => {
-    const fetchListings = async() => {
-      await axios.get('/cars/index')
-      .then((response) => {
-        setListings(response.data.cars)
-      })
-
-      setLoading(false)
-    }
-
-    fetchListings();
-  }, [])
 
   const onChange = (e) => {
     setSearchTerm((prevState) => ({
@@ -37,13 +24,14 @@ function Index() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
+   
     await axios.post('/cars/index/search', searchTerm)
     .then((response) => {
       setListings(response.data.cars)
-      console.log(response.data.cars)
     })
+    setLoading(false)
     setTerm(search)
-    setSearchTerm({search: ""})
     setIsSearch(true)
   }
 

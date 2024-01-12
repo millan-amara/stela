@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
 import { FaWhatsapp } from "react-icons/fa";
-import { MdOutlinePhone, MdOutlineMail } from "react-icons/md";
 import axios from 'axios';
 
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';

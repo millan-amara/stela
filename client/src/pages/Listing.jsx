@@ -139,7 +139,7 @@ function Listing() {
         </table>
 
         <div className='md:w-1/2 md:flex md:justify-center mx-auto'>
-            <a href={`https://wa.me/+254700487751?text= Hi,%20I'm%20interested%20in%20the%20${listing.year}%20${listing.make}%20${listing.model},%20listed%20on%20magaristela.com%20${window.location.href}`} className='text-white px-3 py-1 rounded-md flex items-center justify-center' id='whatsapp'>
+            <a href={`https://wa.me/+254700487751?text= Hi,%20I'm%20interested%20in%20the%20${listing.year}%20${listing.make}%20${listing.model},%20listed%20on%20magaristela.com%20${window.location.href}`} className='text-white px-3 py-3 rounded-t-md rounded-b-none flex items-center justify-center' id='whatsapp'>
                 <FaWhatsapp /> <span> Chat on WhatsApp</span>
             </a>
         </div>

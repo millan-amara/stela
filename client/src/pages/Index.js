@@ -32,6 +32,7 @@ function Index() {
     })
     setLoading(false)
     setTerm(search)
+    setSearchTerm('')
     setIsSearch(true)
   }
 

@@ -147,7 +147,8 @@ function Listing() {
  
 
     <div id='video' className='mt-5'>
-        <iframe id='youtube' src="https://www.youtube.com/embed/FsnIY74ZcjM" title={params.listingId}/>
+        <iframe className='sm:w-full' src="https://www.youtube.com/embed/ImYCVgRWtMs?si=44jhrV0F79CAVcYb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        {/* <iframe id='youtube' src="https://www.youtube.com/embed/FsnIY74ZcjM" title={params.listingId}/> */}
     </div>
 
   

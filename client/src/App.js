@@ -45,7 +45,7 @@ function App() {
           <Route path='/sign-in' element={<SignIn />} />
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
-          <Route path='/cars/:listingId' element={<Listing />} />
+          <Route path='/cars/car/:listingId' element={<Listing />} />
 
         </Routes>
         <Navbar />

@@ -8,7 +8,7 @@ function ListingItem({ listing }) {
   return (
     <li className='categoryListing'> 
         <Link 
-            to={`/cars/${listing._id}`}
+            to={`/cars/car/${listing._id}`}
             className='categoryListingLink'
         >
             <img

@@ -14,6 +14,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const methodOverride = require('method-override');
 const MongoStore = require('connect-mongo');
 
+const requestRoutes = require('./routes/requests');
 const userRoutes = require('./routes/users');
 const carRoutes = require('./routes/cars');
 
@@ -80,6 +81,7 @@ app.use((req, res, next) => {
 
 app.use('/', userRoutes);
 app.use('/cars', carRoutes);
+app.use('/requests', requestRoutes);
 
 
 if (process.env.NODE_ENV === "production") {

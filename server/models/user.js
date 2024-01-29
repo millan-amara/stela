@@ -10,6 +10,10 @@ const UserSchema = new Schema({
     },
     sName: String,
     phone: String,
+    isAdmin: {
+        type: Boolean,
+        default: 'false'
+    },
     resetPasswordToken: String,
     resetPasswordExpires: Date,
 });

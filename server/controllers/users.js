@@ -40,6 +40,11 @@ module.exports.fetchUserCars = async (req, res) => {
     res.json(cars)
 }
 
+module.exports.fetchAllCars = async (req, res) => {
+    const cars = await Car.find({});
+    res.json(cars)
+}
+
 module.exports.updateUser = async (req, res) => {
     const id = req.user._id;
     const user = await User.findByIdAndUpdate(id, req.body)

@@ -108,10 +108,15 @@ function EditListing() {
         console.log(key[0] + ', ' + key[1])
       }
   
-     axios.put(`/cars/${params.listingId}`, requestBody);
-
+     axios.put(`/cars/${params.listingId}`, requestBody)
+     .then((response) => {
+      if(response.data.error) {
+        toast.error(response.data.error);
+      } else {
+        toast.success('Listing saved');
+      }
+     });
       setLoading(false);
-      toast.success('Listing saved');
       navigate(`/profile`);
     }
 

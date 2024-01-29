@@ -71,11 +71,16 @@ function CreateListing() {
         requestBody.append('files', image);
       })
   
-     axios.post('/cars/index', requestBody);
-
-      setLoading(false);
-      toast.success('Listing saved');
-      navigate(`/cars`);
+    await axios.post('/cars/index', requestBody)
+     .then((response) => {
+      if(response.data.error) {
+        toast.error(response.data.error);
+      } else {
+        toast.success('Listing saved');
+      }
+     });
+     setLoading(false);
+     navigate(`/cars`);
     }
 
 
@@ -98,7 +103,7 @@ function CreateListing() {
     }
 
     const onSelectFile = (event) => {
-
+      
       const selectedFiles = event.target.files;
       const selectedFilesArray = Array.from(selectedFiles);
     

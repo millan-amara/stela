@@ -3,14 +3,14 @@ import { Navigate, Outlet } from 'react-router-dom'
 import useAuthStatus from '../hooks/useAuthStatus';
 import Spinner from './Spinner';
 
-const PrivateRoute = () => {
-    const { loggedIn, checkingStatus } = useAuthStatus()
+const AdminRoute = () => {
+    const { isAdmin, checkingStatus } = useAuthStatus()
 
     if(checkingStatus) {
         return <Spinner />
     }
 
-    return loggedIn ? <Outlet /> : <Navigate to='/sign-in' />
+    return isAdmin ? <Outlet /> : <Navigate to='/cars' />
 }
 
-export default PrivateRoute 
+export default AdminRoute 

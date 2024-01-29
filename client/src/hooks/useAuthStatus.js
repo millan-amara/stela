@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function useAuthStatus() {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [checkingStatus, setCheckingStatus] = useState(true);
     const isMounted = useRef(true);
 
@@ -13,7 +14,9 @@ function useAuthStatus() {
             .then((response) => {
                 if(response.data !== '') {
                     setLoggedIn(true)
-                    console.log(response.data)   
+                    if(response.data.isAdmin === true) {
+                        setIsAdmin(true)
+                    }
                 }
                 setCheckingStatus(false)
             })
@@ -30,7 +33,7 @@ function useAuthStatus() {
 
 
   return (
-    {loggedIn, checkingStatus}
+    {loggedIn, isAdmin, checkingStatus}
   )
 }
 

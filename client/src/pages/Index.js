@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ListingItem from '../components/ListingItem';
 import axios from 'axios';
 import Spinner from '../components/Spinner';
-import { FaCheck } from "react-icons/fa";
 import { toast } from 'react-toastify';
 
 function Index() {

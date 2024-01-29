@@ -67,6 +67,8 @@ module.exports.updateCar = async (req, res) => {
     const images = [];
     const carImages = req.files.map(f => ({ url: f.path, filename: f.filename }));
     car.imgs = car.imgs.concat(carImages);
+    car.carName = req.body.make + req.body.model;
+    car.carFull = req.body.make + " " + req.body.model;
     await car.save();
 
     if (req.body.deleted) {

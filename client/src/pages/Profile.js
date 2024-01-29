@@ -12,6 +12,7 @@ function Profile() {
   const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
   const [listings, setListings] = useState(null);
+  const [allCars, setAllCars] = useState(null);
   const [formData, setFormData] = useState({
     sName: '',
     email: '',
@@ -48,8 +49,26 @@ useEffect(() => {
   fetchUserCars();
 }, [user._id])
 
-  const navigate = useNavigate();
 
+
+useEffect(() => {
+  const fetchAllCars = async () => {
+    try {
+      await axios.get('/fetchallcars')
+      .then((response) => {
+      setAllCars(response.data)
+    })
+    } catch (error) {
+      console.log(error)
+    }
+    setLoading(false);
+  }
+
+  fetchAllCars();
+}, [user._id])
+
+
+  const navigate = useNavigate();
 
   const onLogout = () => {
     axios.get('/logout')
@@ -80,7 +99,6 @@ useEffect(() => {
   const onEdit = (listingId) => {
     navigate(`/edit-listing/${listingId}`)
   }
-
 
 
   return (
@@ -144,14 +162,14 @@ useEffect(() => {
           <img src={arrowRight} alt="arrow right" />
         </Link>
 
-        {!loading && listings?.length > 0 && (
+        {!loading && allCars?.length > 0 && (
           <>
-            <p className="listingText">Your Listings</p>
+            <p className="listingText">All Listings</p>
             
-            <ul className="">
-              {listings.map((listing) => (
+            <ul className=''>
+              {allCars.map((listing) => (
                 <ProfileListingItem
-                  key={listing.id}
+                  key={listing._id}
                   listing={listing}
                   id={listing._id}
                   onDelete={() => onDelete(listing._id)}

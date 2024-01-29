@@ -47,16 +47,17 @@ function Listing() {
     <Swiper 
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             pagination={{clickable: true}}
+            className='swiper-container'
         >
             {listing.imgs.map((url, index) => (
                 <SwiperSlide key={index}>
                     <div 
-                        style={{
-                            background: `url(${listing.imgs[index].url})
-                            center no-repeat`,
-                            backgroundSize: 'cover',
-                        }} 
-                        className="swiperSlideDiv"
+                        // style={{
+                        //     background: `url(${listing.imgs[index].url})
+                        //     center no-repeat`,
+                        //     backgroundSize: 'cover',
+                        // }} 
+                        className="swiperSlideDiv" 
                     >
                         <img src={url.url} className="swiperSlideImg" alt="car" />
                     </div>
@@ -147,7 +148,7 @@ function Listing() {
  
 
     <div id='video' className='mt-5'>
-        <iframe className='sm:w-full' src="https://www.youtube.com/embed/ImYCVgRWtMs?si=44jhrV0F79CAVcYb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe className='sm:w-full' src="https://www.youtube.com/embed/ImYCVgRWtMs?si=44jhrV0F79CAVcYb" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         {/* <iframe id='youtube' src="https://www.youtube.com/embed/FsnIY74ZcjM" title={params.listingId}/> */}
     </div>
 

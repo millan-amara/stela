@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import hondaImage from '../assets/jpg/honda.jpg';
 import camryImage from '../assets/jpg/camry.jpg';
 
@@ -15,22 +14,22 @@ function Home() {
 
       <p className='exploreCategoryHeading'>What you looking for?</p>
       <div className='exploreCategories'>
-        <Link to=''>
+        <div className='imageOne'>
           <img 
             src={hondaImage}
             alt='honda accord'
             className='exploreCategoryImg'
           />
-          <p className="exploreCategoryName">Honda Accord</p>
-        </Link>
-        <Link to=''>
+          <p className="exploreCategoryName">Honda Accord</p> 
+        </div>
+        <div className='imageTwo'>
           <img 
             src={camryImage}
             alt='toyota camry'
             className='exploreCategoryImg'
           />
           <p className="exploreCategoryName">Toyota Camry</p>
-        </Link>
+        </div>
       </div>
 
     </main>

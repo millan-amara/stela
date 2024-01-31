@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import hondaImage from '../assets/jpg/honda.jpg';
 import camryImage from '../assets/jpg/camry.jpg';
+import logoImage from '../assets/jpg/stelaa.png';
 
 function Home() {
 
@@ -9,9 +10,16 @@ function Home() {
     <div className='explore'>
     <header>
       <div className='flex justify-start'>
-      <div class="flex flex-col items-center">
-                <p class="text-sm font-extrabold">Magari</p>
-                <p class="text-5xl italic text-green-400 font-extrabold">Stela</p>
+      <div 
+        className="flex flex-col"
+        style={{
+          background: `url(${logoImage})
+          center no-repeat`,
+          backgroundSize: 'cover',
+        }}
+      >
+                <p class="text-sm italic text-green-400 font-black pl-2">Magari</p>
+                <p class="text-5xl italic text-green-400 font-black str">Stela</p>
             </div>
       </div>
 

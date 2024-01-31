@@ -23,6 +23,9 @@ const CarSchema = new Schema({
     fuel: String,
     engineSize: String,
     interiorType: String,
+    phoneNumber: String,
+    yardName: String,
+    videoLink: String,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'

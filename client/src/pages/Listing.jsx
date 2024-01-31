@@ -19,12 +19,17 @@ function Listing() {
     const [listing, setListing] = useState(null);
     const [loading, setLoading] = useState(true);
     const [date, setDate] = useState('');
+    const [user, setUser] = useState('');
     const [sharedLinkCopied, setSharedLinkCopied] = useState(false);
 
     const params = useParams();
 
     useEffect(() => {
         const fetchListing = async() => {
+            axios.get('/logged-in')
+            .then((response) => {
+                setUser(response.data)
+            })
           await axios.get(`/cars/${params.listingId}`) 
           .then((response) => {
             setListing(response.data.car);
@@ -145,12 +150,34 @@ function Listing() {
             </a>
         </div>
     </div>
+    {user.isAdmin &&
+    <div className="table-wrapper">
+        <table className='fl-table fl-table-two'>
+            <thead>
+            <tr>
+                <th>Car</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Yard</td>
+                    <td>{listing.yardName} </td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td>{listing.phoneNumber}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>}
  
+    {listing.videoLink &&
 
     <div id='video' className='mt-5'>
-        <iframe className='sm:w-full' src="https://www.youtube.com/embed/ImYCVgRWtMs?si=44jhrV0F79CAVcYb" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+        <iframe className='sm:w-full' src={listing.videoLink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         {/* <iframe id='youtube' src="https://www.youtube.com/embed/FsnIY74ZcjM" title={params.listingId}/> */}
-    </div>
+    </div>}
 
   
     </main>

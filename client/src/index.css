@@ -947,7 +947,6 @@ h2{
   background: #00cc66;
 }
 
-
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
   background: #324960;
@@ -956,6 +955,12 @@ h2{
 .fl-table tr:nth-child(even) {
   background: #F8F8F8;
 }
+
+.fl-table-two thead th {
+  color: #ffffff;
+  background: #324960;
+}
+
 
 .searchInput {
   border: none;

@@ -93,7 +93,7 @@ function Index() {
             <ul className="listingsList">
               {listings.map((listing) => (
                 <ListingItem
-                  key={listing.id} 
+                  key={listing._id} 
                   listing={listing}
                 />
               ))}

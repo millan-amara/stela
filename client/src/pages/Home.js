@@ -7,14 +7,14 @@ function Home() {
   return (
     <div className='explore'>
     <header>
-          <p className='pageHeader'>MAGARI</p>
+          <p className='pageHeader'>MagariStela</p>
        
     </header>
     <main>
 
       <p className='exploreCategoryHeading'>What you looking for?</p>
       <div className='exploreCategories'>
-        <div className='imageOne'>
+        <div>
           <img 
             src={hondaImage}
             alt='honda accord'
@@ -22,7 +22,7 @@ function Home() {
           />
           <p className="exploreCategoryName">Honda Accord</p> 
         </div>
-        <div className='imageTwo'>
+        <div>
           <img 
             src={camryImage}
             alt='toyota camry'

@@ -27,9 +27,12 @@ function EditListing() {
       interiorType: '',
       deleteImages: [],
       userRef: '',
+      phoneNumber: '',
+      yardName: '',
+      videoLink: '',
     })
   
-    const {make,model,year,mileage,price,location,images,transmission,condition,bodyType,color,fuel,engineSize,interiorType, deleteImages} = formData
+    const {make,model,year,mileage,price,location,images,transmission,condition,bodyType,color,fuel,engineSize,interiorType, deleteImages,phoneNumber,yardName,videoLink} = formData
 
     const navigate = useNavigate()
     const isMounted = useRef(true)
@@ -199,6 +202,30 @@ function EditListing() {
 
           <main>
               <form onSubmit={onSubmit}>
+              <label className='formLabel'>Video Link</label>
+              <input
+                className='formInputName'
+                type='text'
+                id='videoLink'
+                value={videoLink}
+                onChange={onMutate}
+              />
+                <label className='formLabel'>Yard Name</label>
+                <input
+                  className='formInputName'
+                  type='text'
+                  id='yardName'
+                  value={yardName}
+                  onChange={onMutate}
+                />
+                <label className='formLabel'>Yard Phone Number</label>
+                <input
+                  className='formInputName'
+                  type='text'
+                  id='phoneNumber'
+                  value={phoneNumber}
+                  onChange={onMutate}
+                />
                   <label htmlFor="interiorType" className="formLabel">Interior Type</label>
                   <div className="formButtons">
                       <button

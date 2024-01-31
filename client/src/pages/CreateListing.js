@@ -25,9 +25,11 @@ function CreateListing() {
       fuel: '',
       engineSize: '',
       interiorType: '',
+      phoneNumber: '',
+      yardName: '',
     })
   
-    const {make,model,year,mileage,price,location,images,transmission,condition,bodyType,color,fuel,engineSize,interiorType} = formData
+    const {make,model,year,mileage,price,location,images,transmission,condition,bodyType,color,fuel,engineSize,interiorType, phoneNumber,yardName} = formData
 
     const navigate = useNavigate()
     const isMounted = useRef(true)
@@ -155,6 +157,24 @@ function CreateListing() {
 
           <main>
               <form onSubmit={onSubmit}>
+              <label className='formLabel'>Yard Name</label>
+                <input
+                  className='formInputName'
+                  type='text'
+                  id='yardName'
+                  value={yardName}
+                  onChange={onMutate}
+                  required
+                />
+                <label className='formLabel'>Yard Phone Number</label>
+                <input
+                  className='formInputName'
+                  type='text'
+                  id='phoneNumber'
+                  value={phoneNumber}
+                  onChange={onMutate}
+                  required
+                />
                   <label htmlFor="" className="formLabel">Interior Type</label>
                   <div className="formButtons">
                       <button

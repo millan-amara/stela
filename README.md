@@ -27,16 +27,17 @@ Welcome to our Car Marketplace Website! This is a platform built using the MERN 
 
 To get started with running the website locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your/repository.git`
-2. Navigate to the project directory: `cd car-marketplace`
+1. Clone the repository: `git clone https://github.com/hughes-curtis/stela.git`
+2. Navigate to the project directory: `cd stela`
 3. Install dependencies for both the frontend and backend:
-   - For backend: `cd backend && npm install`
-   - For frontend: `cd frontend && npm install`
+   - For backend: `cd server && npm install`
+   - For frontend: `cd client && npm install`
 4. Set up environment variables:
-   - Create a `.env` file in the `backend` directory and add necessary environment variables such as MongoDB URI, JWT secret, Cloudinary credentials, etc.
-5. Start the backend server: `npm start` in the `backend` directory.
-6. Start the frontend development server: `npm start` in the `frontend` directory.
+   - Create a `.env` file in the `server` directory and add necessary environment variables such as MongoDB URI and Cloudinary credentials.
+5. Start the backend server: `node app.js or nodemon app.js` in the `server` directory.
+6. Start the frontend development server: `npm run start` in the `client` directory.
 7. Open your web browser and navigate to `http://localhost:3000` to view the website.
+
 
 ## Contributing
 
